@@ -11,8 +11,6 @@ This demo will:
 
 ## Prepare
 
-## Prepare
-
 ### 1-Checkout code:
 
 ```bash

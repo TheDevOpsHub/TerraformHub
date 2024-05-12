@@ -10,7 +10,7 @@ git clone https://github.com/TheDevOpsHub/TerraformHub.git
 
 Update the S3 and DynamoDB naming variable:
 
-- Open [variables.tf](./variables.tf) then change `bucket_name` and `table_name` to your own value
+- Open [TerraformHub/AWS/tf-backend/variables.tf](./variables.tf) file then change `bucket_name` and `table_name` to your own value
 
 ```terraform
 variable "bucket_name" {

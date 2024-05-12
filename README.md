@@ -16,8 +16,9 @@
 
 ### 2. AWS-Labs
 
-| ID  | Category    | Name                       | URL                                                     | Status  |
-| :-- | :---------- | :------------------------- | :------------------------------------------------------ | :------ |
-| 01  | get-started | EC2 Create Simple Instance | [Explore](./getting-started/ec2/create-simple-instance) | ✔️ Done |
+| ID  | Name                     | URL                                      | Status  |
+| :-- | :----------------------- | :--------------------------------------- | :------ |
+| 01  | Create Terraform Backend | [Explore](./AWS/tf-backend/)             | ✔️ Done |
+| 02  | Provision EC2 Instance   | [Explore](./AWS/provision-ec2-instance/) | ✔️ Done |
 
 And more upcoming content...⏩ you can follow this repository to get more up-to-dated content ⭐

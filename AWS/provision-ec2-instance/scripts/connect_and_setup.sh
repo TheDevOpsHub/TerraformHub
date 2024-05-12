@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
-# Connect
 
+# Connect
 ## Navigate back to Terraform folder
 cd ..
 LINUX_USER="ubuntu"
+private_key_data_file_name="demo_ec2_key"
 
 # Setup filename and get public IP
-private_key_data_file_name="linux_aws_agent_demo_scaler1"
 public_ip_addr=$(terraform output -raw public_ip)
 echo "public_ip_addr: $public_ip_addr"
 

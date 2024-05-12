@@ -8,6 +8,3 @@ terraform plan -destroy -out main.destroy.tfplan
 
 # Destroy
 terraform apply main.destroy.tfplan
-
-
-

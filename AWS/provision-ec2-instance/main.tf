@@ -13,19 +13,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-terraform {
-  backend "s3" {
-    # Replace this with your S3 bucket name!
-    bucket = "tungleo-terraform-state-s3"
-    key    = "aws/ec2-demo-terraform.tfstate"
-    region = "us-east-1"
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
-  }
-}
-
-
 resource "aws_instance" "agent_scaler" {
   # Check AMi at: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
   ami             = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04

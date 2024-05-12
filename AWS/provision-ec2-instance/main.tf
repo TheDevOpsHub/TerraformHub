@@ -21,14 +21,14 @@ resource "aws_instance" "agent_scaler" {
   key_name        = aws_key_pair.kp_scaler.key_name
 
   tags = {
-    Name = "Azure-Agent-Scaler"
+    Name = var.agent_tag_name
   }
 }
 
 # Security Group
 resource "aws_security_group" "focalboard_sg_scaler" {
-  name        = "focalboard-security-group-scaler"
-  description = "Focalboard security group allowing ports 22 and 80"
+  name        = var.security_group_name_for_ec2
+  description = "Security group allowing ports 22 and 80"
 
   ingress {
     from_port   = 22
@@ -67,12 +67,12 @@ resource "tls_private_key" "pk_scaler" {
 }
 
 resource "aws_key_pair" "kp_scaler" {
-  key_name   = "myDemoKey" # Create "myKey" to AWS!!
+  key_name   = var.ssh_key_name_for_ec2 # Create "myKey" to AWS!!
   public_key = tls_private_key.pk_scaler.public_key_openssh
 
-  provisioner "local-exec" { # Create "myAWSKey.pem" to your computer!!
-    command = "echo '${tls_private_key.pk_scaler.private_key_pem}' > /tmp/myDemoKey.pem"
-  }
+  # provisioner "local-exec" { # Create "myAWSKey.pem" to your computer!!
+  #   command = "echo '${tls_private_key.pk_scaler.private_key_pem}' > /tmp/myDemoKey.pem"
+  # }
 }
 
 

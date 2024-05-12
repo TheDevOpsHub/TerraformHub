@@ -1,12 +1,16 @@
 ## Variables
-variable "bucket_name" {
-  description = "The name of the S3 bucket. Must be globally unique."
+variable "agent_tag_name" {
+  description = "The tag name of your EC2 instance"
   type        = string
-  default     = "tungleo-terraform-state-s3"
+  default     = "Demo-EC2"
 }
-
-variable "table_name" {
-  description = "The name of the DynamoDB table. Must be unique in this AWS account."
+variable "security_group_name_for_ec2" {
+  description = "The tag name of your EC2 instance"
   type        = string
-  default     = "terraform-up-and-running-locks"
+  default     = "New-Demo-SG-EC2"
+}
+variable "ssh_key_name_for_ec2" {
+  description = "SSH Key name"
+  type        = string
+  default     = "ssh-Key-EC2"
 }

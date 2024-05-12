@@ -61,27 +61,3 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-
-## Variables
-variable "bucket_name" {
-  description = "The name of the S3 bucket. Must be globally unique."
-  type        = string
-  default     = "tungleo-terraform-state-s3"
-}
-
-variable "table_name" {
-  description = "The name of the DynamoDB table. Must be unique in this AWS account."
-  type        = string
-  default     = "terraform-up-and-running-locks"
-}
-
-## Output
-output "s3_bucket_arn" {
-  value       = aws_s3_bucket.terraform_state.arn
-  description = "The ARN of the S3 bucket"
-}
-
-output "dynamodb_table_name" {
-  value       = aws_dynamodb_table.terraform_locks.name
-  description = "The name of the DynamoDB table"
-}

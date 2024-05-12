@@ -10,27 +10,28 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 terraform {
   backend "s3" {
+    # Replace this with your S3 bucket name!
     bucket = "tungleo-terraform-state-s3"
-    key = "stage/data-stores/mysql/agent-scaler-terraform.tfstate"
+    key    = "aws/ec2-demo-terraform.tfstate"
     region = "us-east-1"
     # Replace this with your DynamoDB table name!
     dynamodb_table = "terraform-up-and-running-locks"
-    encrypt = true
+    encrypt        = true
   }
 }
 
 
 resource "aws_instance" "agent_scaler" {
   # Check AMi at: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
-  ami           = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04
-  instance_type = "t2.micro"
+  ami             = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04
+  instance_type   = "t2.micro"
   security_groups = [aws_security_group.focalboard_sg_scaler.name]
-  key_name      = aws_key_pair.kp_scaler.key_name
+  key_name        = aws_key_pair.kp_scaler.key_name
 
   tags = {
     Name = "Azure-Agent-Scaler"
@@ -79,11 +80,11 @@ resource "tls_private_key" "pk_scaler" {
 }
 
 resource "aws_key_pair" "kp_scaler" {
-  key_name   = "myKeyScaler"       # Create "myKey" to AWS!!
+  key_name   = "myDemoKey" # Create "myKey" to AWS!!
   public_key = tls_private_key.pk_scaler.public_key_openssh
 
   provisioner "local-exec" { # Create "myAWSKey.pem" to your computer!!
-    command = "echo '${tls_private_key.pk_scaler.private_key_pem}' > /tmp/myKeyScaler.pem"
+    command = "echo '${tls_private_key.pk_scaler.private_key_pem}' > /tmp/myDemoKey.pem"
   }
 }
 

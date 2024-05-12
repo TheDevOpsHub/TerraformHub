@@ -70,6 +70,20 @@ cd scripts
 ./provision_n_setup_ec2.sh
 ```
 
+At the end of the script you could find the SSH instruction to access your EC2 VM, similar to:
+
+```bash
+
+```
+
+## Result
+
+- Visit https://aws.amazon.com/console/ to check your EC2 instance
+- SSH to your instance and run some command if needed
+- The result woul look like:
+
+![ec2-result](./assets/ec2-result.png)
+
 ## Cleanup
 
 Run

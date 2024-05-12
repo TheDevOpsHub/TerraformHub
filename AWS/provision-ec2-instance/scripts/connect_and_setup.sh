@@ -29,3 +29,12 @@ cd scripts
 # Install tooling
 echo "Install tooling on agent"
 ssh -o StrictHostKeyChecking=no -i ~/.ssh/${private_key_data_file_name} $LINUX_USER@${public_ip_addr} 'bash -s' <./remote/remote_install_tools.sh
+
+# Add SSH instruction
+echo "Setup completed!"
+echo
+echo "SSH Key location"
+echo "~/.ssh/${private_key_data_file_name}"
+echo
+echo "Now you can run following command to SSH to the EC2 instance:"
+echo "ssh -o StrictHostKeyChecking=no -i ~/.ssh/${private_key_data_file_name} $LINUX_USER@${public_ip_addr}"

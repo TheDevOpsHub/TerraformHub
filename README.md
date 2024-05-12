@@ -24,9 +24,23 @@ Get Started - AWS:
 
 To use your IAM credentials to authenticate the Terraform AWS provider, set the AWS credentials environment variable:
 
+- This will be available in terminal session only:
+
 ```bash
 export AWS_ACCESS_KEY_ID=xxxx-xxxx-xxxx # Replace by yours
 export AWS_SECRET_ACCESS_KEY=yyyy-yyyy-yyyy # Replace by yours
+```
+
+To set the AWS credentials permanently, use `aws configure`:
+
+```bash
+aws configure
+
+## Then input your AWS information:
+# AWS Access Key ID [****************53GT]:
+# AWS Secret Access Key [****************IGNx]:
+# Default region name [us-east-1]:
+# Default output format [None]:
 ```
 
 ### 2. AWS-Labs

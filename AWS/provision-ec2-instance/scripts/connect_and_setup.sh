@@ -21,7 +21,7 @@ chmod 400 ~/.ssh/${private_key_data_file_name}
 ls -la
 
 # Connect and check
-ssh -i ~/.ssh/${private_key_data_file_name} $LINUX_USER@${public_ip_addr} 'ls -la'
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/${private_key_data_file_name} $LINUX_USER@${public_ip_addr} 'ls -la'
 
 # Connect and setup
 cd scripts

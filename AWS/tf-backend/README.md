@@ -32,7 +32,7 @@ Run:
 
 ```bash
 cd scripts
-./create-backend.
+./create-backend.sh
 ```
 
 ## Cleanup

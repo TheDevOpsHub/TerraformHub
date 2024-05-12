@@ -73,7 +73,17 @@ cd scripts
 At the end of the script you could find the SSH instruction to access your EC2 VM, similar to:
 
 ```bash
+#...
+Setup completed!
 
+Public IP:
+x.x.x.x
+
+SSH Key location:
+~/.ssh/demo_ec2_key
+
+Now you can run following command to SSH to the EC2 instance:
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/demo_ec2_key ubuntu@x.x.x.x
 ```
 
 ## Result

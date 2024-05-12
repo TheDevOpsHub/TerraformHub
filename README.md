@@ -3,6 +3,10 @@
 <p align="center">🚀 Practical and document place for Terraform</p>
 <p align="center">With comprehensive Terraform documentation, basic hands-on scripts, advanced examples, and additional resources</p>
 
+## Installation
+
+- Install Terraform: https://developer.hashicorp.com/terraform/install
+
 ## Getting started
 
 - Terraform: https://developer.hashicorp.com/terraform/intro

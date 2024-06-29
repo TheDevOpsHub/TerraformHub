@@ -46,7 +46,7 @@ terraform init -upgrade
 terraform plan -out main.tfplan
 
 # apply
-terraform apply main.tfplan
+terraform apply main.tfplan -var-file="secret.tfvars"
 ```
 
 ## Check the result
@@ -64,3 +64,6 @@ az vm list --resource-group $resource_group_name --query "[].{\"VM Name\":name}"
 ```bash
 terraform plan -destroy -out main.destroy.tfplan
 ```
+
+## Ref
+- https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables#set-values-with-a-tfvars-file

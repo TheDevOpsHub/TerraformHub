@@ -16,6 +16,15 @@ variable "admin_username" {
   description = "Admin username"
 }
 
+variable "admin_ssh_key" {
+  type        = string
+  default     = ""
+  description = "Admin SSH key, set via secret.tfvars"
+}
+
+variable "rg_prefix" {
+  default = "Demo-rg"
+}
 variable "resource_group_location" {
   type        = string
   default     = "eastus"

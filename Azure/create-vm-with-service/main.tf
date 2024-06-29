@@ -8,6 +8,8 @@ data "template_file" "vm_config" {
 }
 
 resource "null_resource" "vm_config_update" {
+  # depends_on = [azurerm_virtual_machine.main]
+
   triggers = {
     template_rendered = data.template_file.vm_config.rendered
   }
@@ -15,7 +17,7 @@ resource "null_resource" "vm_config_update" {
   connection {
     type        = "ssh"
     user        = "azureadmin"
-    host        = azurerm_linux_virtual_machine.main.public_ip_address
+    host        = azurerm_virtual_machine.main.public_ip_address
     private_key = file("~/.ssh/id_rsa")
   }
 
@@ -110,42 +112,60 @@ resource "azurerm_storage_account" "my_storage_account" {
   account_replication_type = "LRS"
 }
 
-
 # Create virtual machine
-resource "azurerm_linux_virtual_machine" "main" {
-  name                  = "myVM"
+
+resource "azurerm_virtual_machine" "flake" {
+  name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
-  size                  = "Standard_DS1_v2"
+  vm_size               = "Standard_DS1_v2"
 
-  os_disk {
-    name                 = "myOsDisk"
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
-  }
-
-  # version of the image to apply (az vm image list)
-  # https://www.flatcar.org/releases
-  source_image_reference {
+  storage_image_reference {
     publisher = "kinvolk"
     offer     = "flatcar-container-linux-free"
     sku       = "stable"
     version   = "3510.3.4"
   }
+  storage_os_disk {
+    name              = "${var.rg_prefix}-osdisk"
+    managed_disk_type = "Standard_LRS"
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+  }
+  delete_os_disk_on_termination = true
 
-  computer_name  = "${var.prefix}-vm"
-  admin_username = var.admin_username
+  # NOTE: Add if any
+  # storage_data_disk {
+  # }
 
-  admin_ssh_key {
-    username   = var.admin_username
-    public_key = jsondecode(azapi_resource_action.ssh_public_key_gen.output).publicKey
+  os_profile {
+    computer_name  = "${var.prefix}-vm"
+    admin_username = var.admin_username
+
+    custom_data = <<-EOF
+      ${file("./config.tmpl.yml")}
+      EOF
   }
 
+  os_profile_linux_config {
+    disable_password_authentication = true
+
+    ssh_keys {
+      path     = "/home/${var.admin_username}/.ssh/authorized_keys"
+      key_data = var.admin_ssh_key
+    }
+  }
+
+  tags = {
+    env = "${var.env}"
+  }
   boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
+    enabled     = true
+    storage_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
   }
 }
+
 
 # Generate random text for a unique storage account name
 resource "random_id" "random_id" {

@@ -121,11 +121,13 @@ resource "azurerm_virtual_machine" "main" {
   network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
   vm_size               = "Standard_DS1_v2"
 
+  # https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/kinvolk.flatcar-container-linux-free?tab=Overview
+  # az vm image list --all --publisher kinvolk | grep flatcar
   storage_image_reference {
     publisher = "kinvolk"
     offer     = "flatcar-container-linux-free"
     sku       = "stable"
-    version   = "3510.3.4"
+    version   = "3815.2.3"
   }
   storage_os_disk {
     name              = "${var.rg_prefix}-osdisk"

@@ -31,7 +31,7 @@ Visit: [docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
 
 - TODO
 
-### 2. Azure-SetLabs
+### 2. Azure-Labs
 
 | ID  | Name                                | URL                                           | Status  |
 | :-- | :---------------------------------- | :-------------------------------------------- | :------ |

@@ -46,7 +46,7 @@ terraform init -upgrade
 terraform plan -out main.tfplan -var-file="secret.tfvars"
 
 # apply
-terraform apply main.tfplan -var-file="secret.tfvars"
+terraform apply main.tfplan
 ```
 
 ## Check the result

@@ -8,7 +8,7 @@ data "template_file" "vm_config" {
 }
 
 resource "null_resource" "vm_config_update" {
-  # depends_on = [azurerm_virtual_machine.main]
+  depends_on = [azurerm_virtual_machine.main]
 
   triggers = {
     template_rendered = data.template_file.vm_config.rendered
@@ -17,7 +17,7 @@ resource "null_resource" "vm_config_update" {
   connection {
     type        = "ssh"
     user        = "azureadmin"
-    host        = azurerm_virtual_machine.main.public_ip_address
+    host        = azurerm_public_ip.my_terraform_public_ip.ip_address
     private_key = file("~/.ssh/id_rsa")
   }
 

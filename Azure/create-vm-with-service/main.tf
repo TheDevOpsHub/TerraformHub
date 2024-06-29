@@ -129,6 +129,13 @@ resource "azurerm_virtual_machine" "main" {
     sku       = "stable"
     version   = "3815.2.3"
   }
+
+  plan {
+    name      = "stable"
+    publisher = "kinvolk"
+    product   = "flatcar-container-linux-free"
+  }
+
   storage_os_disk {
     name              = "${var.rg_prefix}-osdisk"
     managed_disk_type = "Standard_LRS"

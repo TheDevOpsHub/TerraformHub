@@ -43,7 +43,7 @@ cd TerraformHub/Azure/create-vm
 terraform init -upgrade
 
 # plan
-terraform plan -out main.tfplan
+terraform plan -out main.tfplan -var-file="secret.tfvars"
 
 # apply
 terraform apply main.tfplan -var-file="secret.tfvars"

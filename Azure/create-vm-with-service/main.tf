@@ -14,7 +14,7 @@ resource "null_resource" "vm_config_update" {
 
   connection {
     type        = "ssh"
-    user        = "core"
+    user        = "azureadmin"
     host        = azurerm_linux_virtual_machine.main.public_ip_address
     private_key = file("~/.ssh/id_rsa")
   }

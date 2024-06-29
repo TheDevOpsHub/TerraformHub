@@ -1,5 +1,5 @@
 # Load the services definition for the VM
-data "config_template_file" "vm_config" {
+data "template_file" "vm_config" {
   template = file("${path.module}/config.tmpl.yml")
 
   vars = {
@@ -9,7 +9,7 @@ data "config_template_file" "vm_config" {
 
 resource "null_resource" "vm_config_update" {
   triggers = {
-    template_rendered = data.config_template_file.vm_config.rendered
+    template_rendered = data.template_file.vm_config.rendered
   }
 
   connection {
@@ -20,7 +20,7 @@ resource "null_resource" "vm_config_update" {
   }
 
   provisioner "file" {
-    content     = data.config_template_file.vm_config.rendered
+    content     = data.template_file.vm_config.rendered
     destination = "/tmp/ConfigData"
   }
 

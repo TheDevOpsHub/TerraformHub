@@ -33,11 +33,21 @@ export ARM_TENANT_ID="<tenant>"
 
 - Ref: https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build
 
+## Prepare SSH key
+
+In order to SSH to the new VM as well as deploy the service, you need to provide your SSH key
+
+```bash
+cp secret.tfvars.template secret.tfvars
+
+# Now add your SSH public key to secret.tfvars (DO NOT commit it!!!)
+```
+
 ## Provision with Terraform CLI
 
 ```bash
 # navigate to terraform code
-cd TerraformHub/Azure/create-vm
+cd TerraformHub/Azure/create-vm-with-service
 
 # init
 terraform init -upgrade
@@ -66,4 +76,5 @@ terraform plan -destroy -out main.destroy.tfplan
 ```
 
 ## Ref
+
 - https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables#set-values-with-a-tfvars-file

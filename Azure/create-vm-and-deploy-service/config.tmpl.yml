@@ -1,0 +1,32 @@
+coreos:
+  units:
+    - name: demo1.service
+      command: start
+      content: |
+        [Unit]
+        Description=Demo1 scripts
+        # After=docker.service
+        # Requires=docker.service
+
+        [Service]
+        EnvironmentFile=/etc/environment
+        Environment=DEMO_ENV=abcdef
+        ExecStartPre=-cat etc/os-release
+        ExecStart=ls -la
+        ExecStop=/usr/bin/docker kill %p
+        Restart=always
+        RestartSec=10s
+        TimeoutStartSec=0
+        TimeoutStopSec=15
+    - name: demo2.service
+      command: start
+      content: |
+        [Unit]
+        Description=SSH Admin Access
+        After=demo1.service
+        Requires=demo1.service
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=echo "hehe"; echo $DEMO_ENV

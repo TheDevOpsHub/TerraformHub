@@ -46,6 +46,8 @@ If you are done with the experimental and want to stop/destroy all the resources
 
 ```bash
 terraform plan -destroy -out main.destroy.tfplan
+
+terraform apply main.destroy.tfplan
 ```
 
 ## Ref

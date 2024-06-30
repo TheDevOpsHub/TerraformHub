@@ -33,8 +33,8 @@ Visit: [docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
 
 ### 2. Azure-Labs
 
-| ID  | Name                                | URL                                           | Status  |
-| :-- | :---------------------------------- | :-------------------------------------------- | :------ |
-| 01  | Create Azure VM and deploy services | ▶️ [Explore](./Azure/create-vm-with-service/) | ✔️ Done |
+| ID  | Name                                | URL                                                 | Status  |
+| :-- | :---------------------------------- | :-------------------------------------------------- | :------ |
+| 01  | Create Azure VM and deploy services | ▶️ [Explore](./Azure/create-vm-and-deploy-service/) | ✔️ Done |
 
 And more upcoming content...⏩ you can follow this repository to get more up-to-dated content ⭐

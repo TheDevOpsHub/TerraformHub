@@ -16,7 +16,7 @@
 
 ### 1. AWS-Setup
 
-Visit: [docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
+Visit: [AWS/docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
 
 ### 2. AWS-Labs
 
@@ -29,7 +29,7 @@ Visit: [docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
 
 ### 1. Azure-Setup
 
-- TODO
+Visit: [Azure/docs/terraform-azure-setup.md](./Azure/docs/terraform-azure-setup.md)
 
 ### 2. Azure-Labs
 

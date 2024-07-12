@@ -10,6 +10,7 @@
 ## Getting started
 
 - Terraform: https://developer.hashicorp.com/terraform/intro
+- [Getting started](./common/getting-started/)
 - Terraform basics: https://github.com/tungbq/devops-basics/tree/main/topics/terraform
 
 ## AWS

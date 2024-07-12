@@ -37,6 +37,8 @@ Understanding the core concepts of Terraform is crucial to effectively managing 
 
 - Visit https://developer.hashicorp.com/terraform/install to install terraform on your machine.
 
+---
+
 ### Terraform with AWS Setup
 
 In this guide we will demonstrate the integration between Terraform and AWS infrastructure, to setup AWS with Terraform you will need:
@@ -221,6 +223,8 @@ terraform apply
 ```
 
 Confirm by typing `yes` when prompted. Terraform will then update the tags for the existing EC2 instance to reflect your changes.
+Wisit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
+![ec2-updated](./asset/ec2-updated.png) you could see your instance name is changed to `Updated Terraform Demo`.
 
 ---
 

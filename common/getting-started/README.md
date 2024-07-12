@@ -47,10 +47,6 @@ In this guide we will demonstrate the integration between Terraform and AWS infr
 - The AWS CLI installed.
 - AWS account and associated credentials that allow you to create resources.
 
-Get Started - AWS:
-
-- https://developer.hashicorp.com/terraform/tutorials/aws-get-started
-
 To use your IAM credentials to authenticate the Terraform AWS provider, to set the AWS credentials permanently, use `aws configure`:
 
 ```bash
@@ -303,6 +299,8 @@ terraform output instance_id
 terraform output instance_public_ip
 ## "x.x.x.x"
 ```
+
+---
 
 ### Destroying Infrastructure
 

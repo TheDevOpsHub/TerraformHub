@@ -347,3 +347,10 @@ Here are some tools and resources to help you along your Terraform journey:
 - [Awesome Terraform](https://github.com/shuaibiyy/awesome-tf)
 - [Terraform Hub](https://github.com/TheDevOpsHub/TerraformHub)
 - Book: `Terraform: Up and Running`
+
+---
+
+### Summary
+
+In this post, we introduced the fundamentals of Terraform, covering key concepts like providers, resources, and modules. We demonstrated installing Terraform, creating a basic EC2 instance on AWS, and performing essential operations like initializing, applying, modifying, and destroying infrastructure. Additionally, we highlighted best practices and basic usage of variables and outputs to enhance your Terraform configurations.
+I hope this help you for the Terraform journey. Thank you for reading and happy coding!

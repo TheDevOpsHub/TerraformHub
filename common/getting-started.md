@@ -104,6 +104,15 @@ Before Terraform can perform any operations, it needs to be initialized. This is
 
 ```bash
 terraform init
+
+## Sample output:
+# Initializing the backend...
+# Initializing provider plugins...
+# - Finding latest version of hashicorp/aws...
+# - Installing hashicorp/aws v5.58.0...
+# - Installed hashicorp/aws v5.58.0 (signed by HashiCorp)
+# ...
+# Terraform has been successfully initialized!
 ```
 
 This command downloads the necessary provider plugins and prepares your environment.
@@ -122,9 +131,21 @@ If everything looks good, apply the changes:
 
 ```bash
 terraform apply
+
+## Sample output:
+# Enter a value: yes
+# aws_instance.example: Creating...
+# aws_instance.example: Still creating... [10s elapsed]
+# aws_instance.example: Still creating... [20s elapsed]
+# aws_instance.example: Still creating... [30s elapsed]
+# aws_instance.example: Creation complete after 38s [id=i-099dc08ae004bb7f7]
+
+# Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 Terraform will prompt you to confirm. Type `yes` to proceed. Terraform will now provision the resources defined in your configuration.
+Now visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
+![ec2](./asset/ec2-ok.png) you could see your `Terraform Demo` instance up and running.
 
 ---
 
@@ -146,12 +167,12 @@ To make changes to your infrastructure, modify the main.tf file. For example, yo
 
 ```terraform
 resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Updated Terraform Demo"
-    Environment = "Development"
+    Name = "Updated Terraform Demo" # Update instance tag name
+    Environment = "Development" # Adding new tag
   }
 }
 ```
@@ -174,6 +195,29 @@ After initializing, you can apply your changes to update the infrastructure:
 
 ```bash
 terraform apply
+
+## Sample output
+# aws_instance.example: Refreshing state... [id=i-099dc08ae004bb7f7]
+
+# Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+#   ~ update in-place
+
+# Terraform will perform the following actions:
+#   # aws_instance.example will be updated in-place
+#   ~ resource "aws_instance" "example" {
+#         id                                   = "i-099dc08ae004bb7f7"
+#       ~ tags                                 = {
+#           + "Environment" = "Development"
+#           ~ "Name"        = "Terraform Demo" -> "Updated Terraform Demo"
+#         }
+#       ~ tags_all                             = {
+#           + "Environment" = "Development"
+#           ~ "Name"        = "Terraform Demo" -> "Updated Terraform Demo"
+#         }
+#         # (38 unchanged attributes hidden)
+#         # (8 unchanged blocks hidden)
+#     }
+
 ```
 
 Confirm by typing `yes` when prompted. Terraform will then update the tags for the existing EC2 instance to reflect your changes.
@@ -184,12 +228,16 @@ Confirm by typing `yes` when prompted. Terraform will then update the tags for t
 
 Variables in Terraform allow you to parameterize your configurations. They can make your configurations more dynamic and reusable. Here's an example of using variables:
 
-Create a variables.tf file:
+Create a `variables.tf` file:
 
 ```hcl
 variable "instance_name" {
   description = "Name of the EC2 instance"
   default     = "Terraform Demo"
+}
+variable "environment" {
+  description = "Name of the environment"
+  default     = "development"
 }
 ```
 
@@ -197,16 +245,17 @@ Modify main.tf to use the variable:
 
 ```hcl
 resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04
   instance_type = "t2.micro"
 
   tags = {
     Name = var.instance_name
+    Environment = var.environment
   }
 }
 ```
 
-In this example, instance_name is a variable that defaults to "Terraform Demo". You can override this value when running terraform apply.
+In this example, `instance_name` is a variable that defaults to "Variable Terraform Demo". You can override this value when running terraform apply.
 
 Outputs in Terraform allow you to extract and display information about your infrastructure. Add an `outputs.tf` file:
 
@@ -215,9 +264,41 @@ output "instance_id" {
   description = "ID of the EC2 instance"
   value       = aws_instance.example.id
 }
+
+output "instance_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.example.public_ip
+}
+
 ```
 
-After applying your configuration (`terraform apply`), you can view the output by running terraform output instance_id.
+Apply your configuration by runnint `terraform apply`:
+
+```bash
+terraform apply
+## Sample output
+# aws_instance.example: Modifying... [id=i-099dc08ae004bb7f7]
+# aws_instance.example: Modifications complete after 7s [id=i-099dc08ae004bb7f7]
+
+# Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+# Outputs:
+
+# instance_id = "i-099dc08ae004bb7f7"
+# instance_public_ip = "44.202.163.210"
+```
+
+Now you can view the output by running:
+
+```bash
+# Get Instance ID
+terraform output instance_id
+## i-099dc08ae004bb7f7
+
+# Get Public IP
+terraform output instance_public_ip
+## "x.x.x.x"
+```
 
 ### Destroying Infrastructure
 

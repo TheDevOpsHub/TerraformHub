@@ -7,6 +7,7 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Terraform Demo"
+    Name = var.instance_name
+    Environment = var.environment
   }
 }

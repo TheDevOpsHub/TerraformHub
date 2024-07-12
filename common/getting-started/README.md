@@ -1,4 +1,4 @@
-# The Terraform Getting Started Guide
+# 📝The Terraform Getting Started Guide 🚀
 
 As a DevOps engineers, our daily routine often revolves around deploying and managing infrastructure. Mastering the features and functionalities Terraform offers is one of the best investments you can make in yourself as a DevOps.
 

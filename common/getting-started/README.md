@@ -334,6 +334,23 @@ To tear down the infrastructure managed by Terraform, you can run:
 
 ```bash
 terraform destroy
+
+## Output:
+# ...
+# Do you really want to destroy all resources?
+#   Terraform will destroy all your managed infrastructure, as shown above.
+#   There is no undo. Only 'yes' will be accepted to confirm.
+
+#   Enter a value: yes
+
+# aws_instance.example: Destroying... [id=i-099dc08ae004bb7f7]
+# aws_instance.example: Still destroying... [id=i-099dc08ae004bb7f7, 10s elapsed]
+# aws_instance.example: Still destroying... [id=i-099dc08ae004bb7f7, 20s elapsed]
+# aws_instance.example: Still destroying... [id=i-099dc08ae004bb7f7, 30s elapsed]
+# aws_instance.example: Still destroying... [id=i-099dc08ae004bb7f7, 40s elapsed]
+# aws_instance.example: Destruction complete after 44s
+
+# Destroy complete! Resources: 1 destroyed.
 ```
 
 Confirm by typing `yes` when prompted. Terraform will then proceed to destroy all resources defined in your configuration.

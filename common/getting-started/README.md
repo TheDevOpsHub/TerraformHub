@@ -142,7 +142,7 @@ terraform apply
 ```
 
 Terraform will prompt you to confirm. Type `yes` to proceed. Terraform will now provision the resources defined in your configuration.
-Now visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
+<br>Now visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
 ![ec2](./asset/ec2-ok.png) you could see your `Terraform Demo` instance up and running.
 
 ---
@@ -219,7 +219,7 @@ terraform apply
 ```
 
 Confirm by typing `yes` when prompted. Terraform will then update the tags for the existing EC2 instance to reflect your changes.
-Wisit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
+<br>Visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
 ![ec2-updated](./asset/ec2-updated.png) you could see your instance name is changed to `Updated Terraform Demo`.
 
 ---

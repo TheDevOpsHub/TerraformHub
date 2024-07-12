@@ -93,7 +93,7 @@ resource "aws_instance" "example" {
 ```
 
 Check all available AMI in `us-east-1` region at: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
-<br>NOTE: You could find the final code of this blog post [here](https://github.com/TheDevOpsHub/TerraformHub/tree/main/common/getting-started)
+<br>NOTE: You could find the terraform code in this blog post [here](https://github.com/TheDevOpsHub/TerraformHub/tree/main/common/getting-started)
 
 ---
 

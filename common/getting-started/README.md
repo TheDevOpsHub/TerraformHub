@@ -9,13 +9,13 @@ Now let’s get started.
 
 ---
 
-### What is Terraform?
+## What is Terraform?
 
 Terraform is an open-source infrastructure as code software tool created by HashiCorp. It enables users to define and provision a datacenter infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON.
 
 ---
 
-### Key Concepts
+## Key Concepts
 
 Understanding the core concepts of Terraform is crucial to effectively managing infrastructure. Here are the foundational elements:
 
@@ -33,13 +33,13 @@ Understanding the core concepts of Terraform is crucial to effectively managing 
 
 ---
 
-### Installing Terraform
+## Installing Terraform
 
 - Visit https://developer.hashicorp.com/terraform/install to install terraform on your machine.
 
 ---
 
-### Terraform with AWS Setup
+## Terraform with AWS Setup
 
 In this guide we will demonstrate the integration between Terraform and AWS infrastructure, to setup AWS with Terraform you will need:
 
@@ -64,7 +64,7 @@ aws configure list
 
 ---
 
-### Your First Terraform Configuration
+## Your First Terraform Configuration
 
 Create a new directory for your project and navigate into it:
 
@@ -97,7 +97,7 @@ Check all available AMI in `us-east-1` region at: https://us-east-1.console.aws.
 
 ---
 
-### Initializing Terraform
+## Initializing Terraform
 
 Before Terraform can perform any operations, it needs to be initialized. This is done by running:
 
@@ -118,7 +118,7 @@ This command downloads the necessary provider plugins and prepares your environm
 
 ---
 
-### Creating the Infrastructure
+## Creating the Infrastructure
 
 To see what Terraform will do before actually applying changes, run:
 
@@ -148,7 +148,7 @@ Terraform will prompt you to confirm. Type `yes` to proceed. Terraform will now 
 
 ---
 
-### Inspecting the State
+## Inspecting the State
 
 Terraform's state is stored in a file named terraform.tfstate. You can inspect the current state by running:
 
@@ -160,7 +160,7 @@ This command displays all the infrastructure managed by Terraform.
 
 ---
 
-### Modifying Infrastructure
+## Modifying Infrastructure
 
 To make changes to your infrastructure, modify the main.tf file. For example, you can modify the tags associated with the EC2 instance:
 
@@ -178,7 +178,7 @@ resource "aws_instance" "example" {
 
 ---
 
-### Initializing Changes
+## Initializing Changes
 
 After modifying your configuration, initialize Terraform again to update its state and refresh dependencies:
 
@@ -188,7 +188,7 @@ terraform init
 
 ---
 
-### Applying Changes
+## Applying Changes
 
 After initializing, you can apply your changes to update the infrastructure:
 
@@ -225,7 +225,7 @@ Confirm by typing `yes` when prompted. Terraform will then update the tags for t
 
 ---
 
-### Using Variables and Outputs
+## Using Variables and Outputs
 
 Variables in Terraform allow you to parameterize your configurations. They can make your configurations more dynamic and reusable. Here's an example of using variables:
 
@@ -303,7 +303,7 @@ terraform output instance_public_ip
 
 ---
 
-### Destroying Infrastructure
+## Destroying Infrastructure
 
 To tear down the infrastructure managed by Terraform, you can run:
 
@@ -315,7 +315,7 @@ Confirm by typing `yes` when prompted. Terraform will then proceed to destroy al
 
 ---
 
-### Best Practices
+## Best Practices
 
 Here are some best practices to follow when working with Terraform:
 
@@ -327,7 +327,7 @@ Here are some best practices to follow when working with Terraform:
 
 ---
 
-### Common Commands Cheat Sheet
+## Common Commands Cheat Sheet
 
 - `terraform init` - Initialize a Terraform configuration
 - `terraform plan` - Show changes required by the current configuration
@@ -340,7 +340,7 @@ Here are some best practices to follow when working with Terraform:
 
 ---
 
-### Useful Resources
+## Useful Resources
 
 Here are some tools and resources to help you along your Terraform journey:
 
@@ -351,7 +351,7 @@ Here are some tools and resources to help you along your Terraform journey:
 
 ---
 
-### Summary
+## Summary
 
 In this post, we introduced the fundamentals of Terraform, covering key concepts like providers, resources, and modules. We demonstrated installing Terraform, creating a basic EC2 instance on AWS, and performing essential operations like initializing, applying, modifying, and destroying infrastructure. Additionally, we highlighted best practices and basic usage of variables and outputs to enhance your Terraform configurations.
 I hope this help you for the Terraform journey. Thank you for reading and happy coding!

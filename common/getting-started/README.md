@@ -1,17 +1,15 @@
-# 📝The Terraform Getting Started Guide 🚀
-
 As a DevOps engineers, our daily routine often revolves around deploying and managing infrastructure. Mastering the features and functionalities Terraform offers is one of the best investments you can make in yourself as a DevOps.
 
 In this post we will go through the Terraform introduction, concepts, then get hands on by building, changing, destroying the AWS EC2 instance.
 If you think I've overlooked something or should delve deeper into a particular topic, please leave a comment below. I'll update this post accordingly. Thanks in advance!
 
-Now let’s get started.
+Now let’s get started 🔥🔥🔥
 
 ---
 
 ## What is Terraform?
 
-Terraform is an open-source infrastructure as code software tool created by HashiCorp. It enables users to define and provision a datacenter infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON.
+[Terraform](https://www.terraform.io/) is an open-source infrastructure as code software tool created by HashiCorp. It enables users to define and provision a datacenter infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON.
 
 ---
 
@@ -35,7 +33,7 @@ Understanding the core concepts of Terraform is crucial to effectively managing 
 
 ## Installing Terraform
 
-- Visit https://developer.hashicorp.com/terraform/install to install terraform on your machine.
+- Check this document: https://developer.hashicorp.com/terraform/install to install terraform on your machine.
 
 ---
 
@@ -44,8 +42,8 @@ Understanding the core concepts of Terraform is crucial to effectively managing 
 In this guide we will demonstrate the integration between Terraform and AWS infrastructure, to setup AWS with Terraform you will need:
 
 - The Terraform CLI (1.2.0+) installed.
-- The AWS CLI installed.
-- AWS account and associated credentials that allow you to create resources.
+- The AWS CLI installed (https://aws.amazon.com/cli/).
+- AWS account and associated credentials that allow you to create resources (https://aws.amazon.com/console/).
 
 To use your IAM credentials to authenticate the Terraform AWS provider, to set the AWS credentials permanently, use `aws configure`:
 
@@ -60,6 +58,15 @@ aws configure
 
 ## Check your credential by running:
 aws configure list
+
+## Output
+# ➜  ~ aws configure list
+#       Name                    Value             Type    Location
+#       ----                    -----             ----    --------
+#    profile                <not set>             None    None
+# access_key     ****************53GT shared-credentials-file
+# secret_key     ****************IGNx shared-credentials-file
+#     region                us-east-1      config-file    ~/.aws/config
 ```
 
 ---
@@ -143,8 +150,8 @@ terraform apply
 ```
 
 Terraform will prompt you to confirm. Type `yes` to proceed. Terraform will now provision the resources defined in your configuration.
-<br>Now visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
-![ec2](./asset/ec2-ok.png) you could see your `Terraform Demo` instance up and running.
+<br>Now visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you can see your `Terraform Demo` instance up and running:
+![ec2](https://github.com/TheDevOpsHub/TerraformHub/blob/main/common/getting-started/asset/ec2-ok.png?raw=true)
 
 ---
 
@@ -154,6 +161,24 @@ Terraform's state is stored in a file named terraform.tfstate. You can inspect t
 
 ```bash
 terraform show
+
+## Output
+# aws_instance.example:
+# resource "aws_instance" "example" {
+#     ami                                  = "ami-0e001c9271cf7f3b9"
+#     arn                                  = "arn:aws:ec2:us-east-1:992382371456:instance/i-099dc08ae004bb7f7"
+#     associate_public_ip_address          = true
+#     availability_zone                    = "us-east-1b"
+#     cpu_core_count                       = 1
+#     ...
+#     host_id                              = null
+#     iam_instance_profile                 = null
+#     id                                   = "i-099dc08ae004bb7f7"
+#     instance_initiated_shutdown_behavior = "stop"
+#     instance_lifecycle                   = null
+#     instance_state                       = "running"
+#     instance_type                        = "t2.micro"
+# ...other information
 ```
 
 This command displays all the infrastructure managed by Terraform.
@@ -220,8 +245,8 @@ terraform apply
 ```
 
 Confirm by typing `yes` when prompted. Terraform will then update the tags for the existing EC2 instance to reflect your changes.
-<br>Visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you could see
-![ec2-updated](./asset/ec2-updated.png) you could see your instance name is changed to `Updated Terraform Demo`.
+<br>Visit [AWS EC2 Console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) you can see your instance name is changed to `Updated Terraform Demo`:
+![ec2-updated](https://github.com/TheDevOpsHub/TerraformHub/blob/main/common/getting-started/asset/ec2-updated.png?raw=true)
 
 ---
 
@@ -231,10 +256,10 @@ Variables in Terraform allow you to parameterize your configurations. They can m
 
 Create a `variables.tf` file:
 
-```hcl
+```tf
 variable "instance_name" {
   description = "Name of the EC2 instance"
-  default     = "Terraform Demo"
+  default     = "Variable Terraform Demo"
 }
 variable "environment" {
   description = "Name of the environment"
@@ -244,7 +269,7 @@ variable "environment" {
 
 Modify main.tf to use the variable:
 
-```hcl
+```tf
 resource "aws_instance" "example" {
   ami           = "ami-0e001c9271cf7f3b9" # Ubuntu 22.04
   instance_type = "t2.micro"
@@ -260,7 +285,7 @@ In this example, `instance_name` is a variable that defaults to "Variable Terraf
 
 Outputs in Terraform allow you to extract and display information about your infrastructure. Add an `outputs.tf` file:
 
-```
+```tf
 output "instance_id" {
   description = "ID of the EC2 instance"
   value       = aws_instance.example.id
@@ -354,4 +379,4 @@ Here are some tools and resources to help you along your Terraform journey:
 ## Summary
 
 In this post, we introduced the fundamentals of Terraform, covering key concepts like providers, resources, and modules. We demonstrated installing Terraform, creating a basic EC2 instance on AWS, and performing essential operations like initializing, applying, modifying, and destroying infrastructure. Additionally, we highlighted best practices and basic usage of variables and outputs to enhance your Terraform configurations.
-I hope this help you for the Terraform journey. Thank you for reading and happy coding!
+<br>I hope this help you for the Terraform journey. Thank you for reading and happy coding! 💖

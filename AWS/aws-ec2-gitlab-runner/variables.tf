@@ -13,7 +13,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "The name of the key pair to use for the instance."
   type        = string
-  default     = "myKeyScaler" # change to yours
+  default     = "ec2-ssh-key" # change to yours
 }
 
 variable "gitlab_runner_registration_token" {

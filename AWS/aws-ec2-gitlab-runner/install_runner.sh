@@ -1,5 +1,9 @@
 #!/bin/bash
 # Install necessary dependencies
+# set -x enables a mode of the shell where all executed commands are printed to the terminal
+set -x
+echo "Hello from EC2 user data script"
+
 yum update -y
 yum install -y curl
 

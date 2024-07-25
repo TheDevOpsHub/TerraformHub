@@ -15,3 +15,6 @@ terraform force-unlock -force LOCK_ID
 ```bash
 terraform init -reconfigure
 ```
+
+3. Troubleshoow the user-data script
+   Goto: Instance > Action > Monitor and Troubleshoot > Get system log

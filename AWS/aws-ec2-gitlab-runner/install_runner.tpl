@@ -12,7 +12,7 @@ curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3
 chmod +x /usr/local/bin/gitlab-runner
 
 
-sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
 
 # Start the GitLab Runner service
 /usr/local/bin/gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner

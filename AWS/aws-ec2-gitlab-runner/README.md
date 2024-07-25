@@ -140,5 +140,4 @@ ssh -i "ec2-ssh-key.pem" ec2-user@yourec2domain.compute-1.amazonaws.com
 
 ```bash
 systemctl status gitlab-runner.service
-
 ```

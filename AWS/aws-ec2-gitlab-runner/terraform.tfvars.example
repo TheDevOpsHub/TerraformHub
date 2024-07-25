@@ -1,0 +1,2 @@
+# THIS IS AN EXAMPLE FILE. DO NOT PUT YOUR CREDENTIAL HERE!!!
+gitlab_runner_registration_token = "your-registration-token"

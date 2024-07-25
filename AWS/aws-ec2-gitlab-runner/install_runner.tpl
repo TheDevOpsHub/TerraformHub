@@ -27,3 +27,5 @@ useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
   --tag-list "aws,linux" \
   --run-untagged="true" \
   --locked="false"
+
+systemctl status -l gitlab-runner.service

@@ -21,10 +21,11 @@ Visit: [AWS/docs/terraform-aws-setup.md](./AWS/docs/terraform-aws-setup.md)
 
 ### 2. AWS-Labs
 
-| ID  | Name                                 | URL                                         | Status  |
-| :-- | :----------------------------------- | :------------------------------------------ | :------ |
-| 01  | Create Terraform Backend             | ▶️ [Explore](./AWS/tf-backend/)             | ✔️ Done |
-| 02  | Provision and setup AWS EC2 instance | ▶️ [Explore](./AWS/provision-ec2-instance/) | ✔️ Done |
+| ID  | Name                                         | URL                                         | Status  |
+| :-- | :------------------------------------------- | :------------------------------------------ | :------ |
+| 01  | Create Terraform Backend                     | ▶️ [Explore](./AWS/tf-backend/)             | ✔️ Done |
+| 02  | Provision and setup AWS EC2 instance         | ▶️ [Explore](./AWS/provision-ec2-instance/) | ✔️ Done |
+| 03  | Provision and setup GitLab runner on AWS EC2 | ▶️ [Explore](./AWS/aws-ec2-gitlab-runner/)  | ✔️ Done |
 
 ## Azure
 

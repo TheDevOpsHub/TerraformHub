@@ -11,6 +11,13 @@ yum install -y curl git
 curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 chmod +x /usr/local/bin/gitlab-runner
 
+
+sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+
+# Start the GitLab Runner service
+/usr/local/bin/gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+/usr/local/bin/gitlab-runner start
+
 # Register the GitLab Runner
 /usr/local/bin/gitlab-runner register --non-interactive \
   --url "https://gitlab.com/" \
@@ -20,7 +27,3 @@ chmod +x /usr/local/bin/gitlab-runner
   --tag-list "aws,linux" \
   --run-untagged="true" \
   --locked="false"
-
-# Start the GitLab Runner service
-/usr/local/bin/gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
-/usr/local/bin/gitlab-runner start

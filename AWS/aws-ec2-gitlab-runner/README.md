@@ -5,6 +5,7 @@
 - https://gitlab.com/
 - https://us-east-1.console.aws.amazon.com/ec2/
 - To get Token: Gitlab > $YOUR_GROUP > $Your_Project > CI/CD Settings > Register runner
+- https://docs.gitlab.com/runner/register/
 
 ## Provision step
 
@@ -115,4 +116,29 @@ Once provisioning proccess completed, we will have the GitLab-AWS EC2 architectu
                                              |
                                              | SSH Access
                                              v
+```
+
+## Debug
+
+- Connect to EC2 instance
+
+```bash
+# Open an SSH client.
+# Locate your private key file. The key used to launch this instance is 'ec2-ssh-key.pem'
+# Run this command, if necessary, to ensure your key is not publicly viewable.
+
+chmod 400 "ec2-ssh-key.pem"
+
+# Connect to your instance using its Public DNS: yourec2domain.compute-1.amazonaws.com
+
+ssh -i "ec2-ssh-key.pem" ec2-user@yourec2domain.compute-1.amazonaws.com
+
+## NOTE: Repace 'ec2-ssh-key.pem' by your key name
+```
+
+- Debug gitlab runner service on EC2
+
+```bash
+systemctl status gitlab-runner.service
+
 ```
